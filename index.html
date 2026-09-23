@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>이마트 신촌점 K-Palette Zone | Official Campaign</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        emart: {
+                            yellow: '#FFB800',
+                            brightYellow: '#FFC72C',
+                            dark: '#1E1E1E',
+                            accent: '#FF4D4D',
+                            lightGray: '#F5F6F8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #0f0f11;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        .glass-nav {
+            background: rgba(30, 30, 30, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card-light {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        .emart-gradient {
+            background: linear-gradient(135deg, #FFB800 0%, #FF8C00 100%);
+        }
+        .text-gradient-yellow {
+            background: linear-gradient(135deg, #FFC72C 0%, #FF9000 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* TikTok / Shorts 9:16 Frame */
+        .shorts-container {
+            aspect-ratio: 9 / 16;
+            max-width: 360px;
+            width: 100%;
+        }
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e1e1e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FFB800;
+            border-radius: 4px;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .pulse-effect {
+            animation: pulse-ring 3s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-100">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="bg-emart-yellow text-emart-dark font-black px-3 py-1.5 rounded-lg text-lg tracking-tighter flex items-center gap-1">
+                        <span>emart</span>
+                        <span class="bg-emart-dark text-emart-yellow px-1.5 py-0.5 rounded text-xs">신촌</span>
+                    </div>
+                    <div class="h-5 w-[1px] bg-gray-700"></div>
+                    <span class="font-extrabold text-xl tracking-tight text-white flex items-center gap-1">
+                        K-Palette <span class="text-emart-yellow">Zone</span>
+                    </span>
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                    <a href="#shorts" class="hover:text-emart-yellow transition-colors flex items-center gap-1.5">
+                        <i class="fa-solid fa-play text-xs text-emart-yellow"></i> 9:16 Shorts
+                    </a>
+                    <a href="#solutions" class="hover:text-emart-yellow transition-colors">3대 혁신 솔루션</a>
+                    <a href="#cardnews" class="hover:text-emart-yellow transition-colors">카드뉴스 가이드</a>
+                    <a href="#experience" class="hover:text-emart-yellow transition-colors">공간 경험</a>
+                    <a href="#checklist" class="hover:text-emart-yellow transition-colors">캠페인 일정</a>
+                    <a href="#location" class="hover:text-emart-yellow transition-colors">위치 및 혜택</a>
+                </nav>
+
+                <!-- Right Side: Language & AR Link Button -->
+                <div class="flex items-center space-x-3">
+                    <!-- Language Switcher Simulation -->
+                    <div class="relative inline-block text-left">
+                        <select id="langSelect" onchange="changeLanguage(this.value)" class="bg-gray-800 text-xs text-gray-200 border border-gray-700 rounded-lg px-2.5 py-1.5 focus:outline-none focus:border-emart-yellow cursor-pointer">
+                            <option value="ko">🇰🇷 한국어</option>
+                            <option value="en">🇺🇸 English</option>
+                            <option value="zh">🇨🇳 中文</option>
+                            <option value="ja">🇯🇵 日本語</option>
+                        </select>
+                    </div>
+
+                    <a href="#solutions" class="hidden sm:inline-flex items-center justify-center bg-emart-yellow hover:bg-yellow-400 text-emart-dark font-bold px-4 py-2 rounded-xl text-xs sm:text-sm transition-all transform hover:scale-105 shadow-lg shadow-yellow-500/20">
+                        <i class="fa-solid fa-location-arrow mr-1.5"></i> AR 길찾기
+                    </a>
+
+                    <!-- Mobile menu button -->
+                    <button type="button" onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-xl" id="menuIcon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-emart-dark/95 border-b border-gray-800 px-4 pt-2 pb-6 space-y-3 text-sm">
+            <a href="#shorts" onclick="toggleMobileMenu()" class="block py-2 hover:text-emart-yellow border-b border-gray-800"><i class="fa-solid fa-play text-emart-yellow mr-2"></i>9:16 Shorts 영상</a>
+            <a href="#solutions" onclick="toggleMobileMenu()" class="block py-2 hover:text-emart-yellow border-b border-gray-800">3대 혁신 솔루션</a>
+            <a href="#cardnews" onclick="toggleMobileMenu()" class="block py-2 hover:text-emart-yellow border-b border-gray-800">카드뉴스 가이드</a>
+            <a href="#experience" onclick="toggleMobileMenu()" class="block py-2 hover:text-emart-yellow border-b border-gray-800">공간 경험</a>
+            <a href="#checklist" onclick="toggleMobileMenu()" class="block py-2 hover:text-emart-yellow border-b border-gray-800">캠페인 실행 일정</a>
+            <a href="#location" onclick="toggleMobileMenu()" class="block py-2 hover:text-emart-yellow">오시는 길 & 공항 배송</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden bg-gradient-to-b from-gray-900 via-emart-dark to-[#0f0f11]">
+        <!-- Background Glowing Orbs -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emart-yellow/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-80 h-80 bg-red-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Text Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emart-yellow/10 border border-emart-yellow/30 text-emart-yellow text-xs sm:text-sm font-semibold">
+                        <span class="w-2 h-2 rounded-full bg-emart-yellow animate-ping"></span>
+                        <span id="heroBadge">e-mart Sinchon X K-Palette Zone Launch</span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight">
+                        <span id="heroTitle1" class="block text-white">한국 여행 와서</span>
+                        <span id="heroTitle2" class="block text-gradient-yellow">뭐 살지 고민돼?</span>
+                    </h1>
+
+                    <p id="heroSubtitle" class="text-gray-300 text-base sm:text-xl font-normal max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        진짜 한국인이 사랑하는 리얼 픽! <strong class="text-white font-bold">이마트 신촌점 B3 Level K-Palette Zone</strong>에서 언어 장벽 없는 스마트 옴니채널 쇼핑을 경험하세요.
+                    </p>
+
+                    <!-- Feature Badges -->
+                    <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-3 text-xs sm:text-sm font-medium text-gray-300">
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-800/80 border border-gray-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-mobile-screen-button text-emart-yellow"></i> 무설치 AR 길찾기
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-800/80 border border-gray-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-wifi text-emart-yellow"></i> 1초 NFC 원터치
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-800/80 border border-gray-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-fire text-emart-yellow"></i> SNS TOP 100 핫템
+                        </span>
+                        <span class="px-3 py-1.5 rounded-lg bg-gray-800/80 border border-gray-700 flex items-center gap-1.5">
+                            <i class="fa-solid fa-plane-departure text-emart-yellow"></i> 공항 직송 서비스
+                        </span>
+                    </div>
+
+                    <!-- CTA Buttons -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#shorts" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-emart-yellow hover:bg-yellow-400 text-emart-dark font-extrabold text-base transition-all transform hover:-translate-y-0.5 shadow-xl shadow-yellow-500/20 text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-circle-play text-lg"></i>
+                            <span id="btnShorts">9:16 홍보 영상 보기</span>
+                        </a>
+                        <a href="#solutions" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card hover:bg-white/10 text-white font-bold text-base transition-all border border-gray-600 text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-compass"></i>
+                            <span id="btnSolutions">3대 솔루션 확인하기</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Hero Visual Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md glass-card rounded-3xl p-6 border border-yellow-500/30 shadow-2xl overflow-hidden">
+                        <div class="absolute -top-12 -right-12 w-32 h-32 bg-emart-yellow/20 rounded-full blur-xl"></div>
+                        <div class="flex items-center justify-between border-b border-gray-700 pb-4 mb-4">
+                            <div class="flex items-center gap-2">
+                                <i class="fa-solid fa-store text-emart-yellow text-xl"></i>
+                                <span class="font-bold text-sm tracking-wide">이마트 신촌점 B3층</span>
+                            </div>
+                            <span class="bg-red-500/20 text-red-400 text-xs px-2.5 py-1 rounded-full border border-red-500/30 font-semibold flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse"></span> LIVE OPERATING
+                            </span>
+                        </div>
+
+                        <!-- Mock AR Finder Card -->
+                        <div class="space-y-4">
+                            <div class="relative rounded-2xl overflow-hidden bg-gray-900 border border-gray-800 h-48 flex items-center justify-center text-center p-4 group">
+                                <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?auto=format&fit=crop&w=800&q=80" alt="Supermarket aisle" class="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
+                                <div class="relative z-10 space-y-2">
+                                    <span class="inline-block px-3 py-1 bg-emart-yellow text-emart-dark font-black text-xs rounded-md shadow">
+                                        웹 AR 내비게이션
+                                    </span>
+                                    <p class="text-xs text-gray-200">노란색 바닥 유도선 따라 B3 매장까지 논스톱 안내</p>
+                                    <div class="inline-flex items-center gap-1 text-emart-yellow text-xs font-bold">
+                                        <span>앱 설치 필요 없음</span>
+                                        <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Live Hot Item Snippet -->
+                            <div class="p-3.5 rounded-xl bg-gray-800/80 border border-gray-700/80 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-lg bg-emart-yellow/20 flex items-center justify-center text-emart-yellow font-bold text-lg flex-shrink-0">
+                                    🔥
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <div class="text-xs text-gray-400">SNS 실시간 꿀조합 Top 1</div>
+                                    <div class="text-sm font-bold text-white truncate">불닭볶음면 + 짜파게티 세트</div>
+                                </div>
+                                <span class="text-xs bg-gray-700 text-emart-yellow px-2 py-1 rounded font-bold">BEST</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 9:16 SHORTS VIDEO SECTION -->
+    <section id="shorts" class="py-20 bg-gray-900/60 border-y border-gray-800 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="text-emart-yellow text-xs sm:text-sm font-black uppercase tracking-wider bg-emart-yellow/10 px-3 py-1 rounded-full border border-emart-yellow/20">
+                    <i class="fa-brands fa-tiktok mr-1"></i> TikTok / Reels / Shorts Viral
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white">
+                    15초로 보는 K-Palette Zone 생생 현장
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    "한국 마트만 오면 멘붕 오는 사람?" 첫 3초 만에 쇼핑 고민 해결해 드립니다!
+                </p>
+            </div>
+
+            <!-- Video & Feature Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                
+                <!-- 9:16 Video Interactive Frame -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="shorts-container relative rounded-3xl overflow-hidden bg-black border-4 border-gray-800 shadow-2xl flex flex-col group">
+                        
+                        <!-- Top Mobile Bar Simulation -->
+                        <div class="absolute top-0 left-0 right-0 z-30 p-3 bg-gradient-to-b from-black/80 to-transparent flex items-center justify-between text-white text-xs">
+                            <span class="font-bold flex items-center gap-1">
+                                <span class="w-2 h-2 rounded-full bg-red-500 animate-ping"></span> Live Preview
+                            </span>
+                            <div class="flex items-center gap-2">
+                                <button onclick="toggleAudio()" id="muteBtn" class="bg-black/40 p-1.5 rounded-full hover:bg-black/70 transition">
+                                    <i class="fa-solid fa-volume-xmark text-sm" id="muteIcon"></i>
+                                </button>
+                                <button onclick="toggleSubtitles()" id="subBtn" class="bg-black/40 px-2 py-1 rounded-full hover:bg-black/70 text-[10px] font-bold border border-white/20">
+                                    CC EN
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- 3초 Hook Header Banner -->
+                        <div class="absolute top-12 left-3 right-3 z-30 bg-emart-yellow text-emart-dark font-black text-xs px-3 py-2 rounded-xl text-center shadow-lg border border-yellow-300 transform -rotate-1">
+                            🚀 한국 마트 멘붕 해결법! 1초 만에 쇼핑 완료
+                        </div>
+
+                        <!-- HTML5 Video Tag with Video.mp4 and Fallback Poster -->
+                        <div class="relative w-full h-full bg-gray-950 flex items-center justify-center overflow-hidden">
+                            <video id="shortsVideo" class="w-full h-full object-cover" loop muted playsinline poster="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=600&q=80">
+                                <source src="video.mp4" type="video/mp4">
+                                귀하의 브라우저는 비디오 태그를 지원하지 않습니다.
+                            </video>
+
+                            <!-- Video Overlay Controls on Touch/Click -->
+                            <div id="videoOverlay" onclick="togglePlay()" class="absolute inset-0 bg-black/30 flex items-center justify-center cursor-pointer opacity-100 hover:opacity-100 transition-opacity">
+                                <div class="w-16 h-16 rounded-full bg-emart-yellow/90 text-emart-dark flex items-center justify-center text-2xl pl-1 shadow-2xl transition transform hover:scale-110">
+                                    <i class="fa-solid fa-play" id="playIcon"></i>
+                                </div>
+                            </div>
+
+                            <!-- Floating Subtitle Bar -->
+                            <div id="subtitleBox" class="absolute bottom-20 left-4 right-16 z-30 bg-black/75 backdrop-blur-md text-white text-xs p-2.5 rounded-xl border border-white/10">
+                                <p class="font-semibold text-emart-yellow">"Where are the real Korean hot items?"</p>
+                                <p class="text-[11px] text-gray-300">NFC One-tap gives multilingual info in 1s!</p>
+                            </div>
+                        </div>
+
+                        <!-- Right TikTok Action Buttons Overlay -->
+                        <div class="absolute right-3 bottom-20 z-30 flex flex-col items-center space-y-4 text-white text-xs">
+                            <button onclick="likeVideo()" class="flex flex-col items-center group">
+                                <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center group-hover:bg-red-500/80 transition">
+                                    <i class="fa-solid fa-heart text-lg" id="heartIcon"></i>
+                                </div>
+                                <span class="text-[10px] mt-1 font-bold" id="likeCount">12.8k</span>
+                            </button>
+
+                            <button onclick="shareVideo()" class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center hover:bg-emart-yellow hover:text-emart-dark transition">
+                                    <i class="fa-solid fa-share text-lg"></i>
+                                </div>
+                                <span class="text-[10px] mt-1 font-bold">공유</span>
+                            </button>
+
+                            <a href="video.mp4" download class="flex flex-col items-center">
+                                <div class="w-10 h-10 rounded-full bg-black/40 backdrop-blur-md flex items-center justify-center hover:bg-gray-700 transition">
+                                    <i class="fa-solid fa-download text-lg"></i>
+                                </div>
+                                <span class="text-[10px] mt-1 font-bold">다운</span>
+                            </a>
+                        </div>
+
+                        <!-- Bottom Info Overlay -->
+                        <div class="absolute bottom-0 left-0 right-0 z-20 p-4 bg-gradient-to-t from-black via-black/80 to-transparent text-white text-xs space-y-1">
+                            <div class="font-bold flex items-center gap-1 text-emart-yellow">
+                                <span>@emart_sinchon_official</span>
+                                <i class="fa-solid fa-circle-check text-[10px]"></i>
+                            </div>
+                            <p class="text-gray-200 line-clamp-2">
+                                신촌 이마트 B3 K-Palette Zone 오픈! AR 길찾기 & 불닭+짜파게티 꿀조합 세트 득템🔥
+                            </p>
+                            <div class="text-[10px] text-gray-400 flex items-center gap-2 pt-1">
+                                <span>#KPaletteZone</span>
+                                <span>#EmartSinchon</span>
+                                <span>#KoreaTravel</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Right Explanatory Bullet Cards -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="glass-card rounded-2xl p-6 border-l-4 border-l-emart-yellow">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emart-yellow/20 text-emart-yellow flex items-center justify-center text-xl flex-shrink-0 font-bold">
+                                01
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">바이럴 확산 최적화 숏폼 (mp4)</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    TikTok, Instagram Reels, YouTube Shorts 공통 9:16 세로형 규격. 현장 방문 외국인의 실제 반응을 담은 15초 직관적 영상.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 border-l-4 border-l-emart-yellow">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emart-yellow/20 text-emart-yellow flex items-center justify-center text-xl flex-shrink-0 font-bold">
+                                02
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">첫 3초 후킹 메시지 장착</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    "한국 마트 길 찾기 어려운 사람?" 질문으로 시작하여 매장 헤맴 방지 AR 및 다국어 NFC 시연을 1초 만에 각인.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-6 border-l-4 border-l-emart-yellow">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-xl bg-emart-yellow/20 text-emart-yellow flex items-center justify-center text-xl flex-shrink-0 font-bold">
+                                03
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-white mb-1">다국어 자막 & 구글맵 위치 링크</h3>
+                                <p class="text-gray-300 text-sm leading-relaxed">
+                                    영어, 중국어, 일본어 모국어 스크립트 대응 및 고정 댓글 내 지하철 2호선 신촌역 직결 지도 링크 연동.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Status Banner -->
+                    <div class="p-4 rounded-xl bg-gray-800/90 border border-gray-700 flex items-center justify-between text-xs sm:text-sm">
+                        <div class="flex items-center gap-2 text-gray-300">
+                            <i class="fa-solid fa-file-video text-emart-yellow text-lg"></i>
+                            <span>영상 파일: <strong class="text-white">video.mp4</strong> (로컬 준비 완료)</span>
+                        </div>
+                        <button onclick="togglePlay()" class="px-3 py-1.5 rounded-lg bg-emart-yellow text-emart-dark font-bold hover:bg-yellow-400 transition">
+                            재생 / 일시정지
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3 PAIN POINTS & INNOVATION SOLUTIONS SECTION -->
+    <section id="solutions" class="py-24 bg-emart-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-emart-yellow text-xs sm:text-sm font-black uppercase tracking-wider bg-emart-yellow/10 px-3 py-1 rounded-full border border-emart-yellow/20">
+                    K-Palette Zone Solution Mapping
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                    외국인 관광객 3대 페인포인트 & 혁신 솔루션
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    불편함은 빼고, 쇼핑의 즐거움만 채웠습니다. 이마트 신촌점만의 맞춤형 시스템!
+                </p>
+            </div>
+
+            <!-- Solution Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Solution 01 -->
+                <div class="glass-card rounded-3xl p-8 border border-gray-800 hover:border-emart-yellow/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-6">
+                        <!-- Pain Point Header -->
+                        <div class="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 space-y-1">
+                            <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+                                <span>PAIN 01</span>
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <h4 class="font-bold text-base text-red-300">내비게이션 부재</h4>
+                            <p class="text-xs text-gray-300">넓은 매장 내에서 원하는 품목 위치를 찾기 어려움</p>
+                        </div>
+
+                        <!-- Arrow Down Indicator -->
+                        <div class="text-center text-emart-yellow text-xl">
+                            <i class="fa-solid fa-arrow-down animate-bounce"></i>
+                        </div>
+
+                        <!-- Innovation Solution -->
+                        <div class="space-y-3">
+                            <div class="inline-block px-3 py-1 rounded-lg bg-emart-yellow/20 text-emart-yellow text-xs font-black">
+                                SOLUTION 01
+                            </div>
+                            <h3 class="text-xl font-extrabold text-white group-hover:text-emart-yellow transition-colors">
+                                바닥 안내선 & 웹 AR 길찾기
+                            </h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                이마트24 Yellow 바닥 유도선과 앱 설치가 필요 없는 스마트폰 웹 AR 내비게이션으로 B3 매장까지 논스톱 안내.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-800 mt-6 flex items-center justify-between text-xs text-emart-yellow font-bold">
+                        <span>"앱 설치도 필요 없어!"</span>
+                        <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Solution 02 -->
+                <div class="glass-card rounded-3xl p-8 border border-gray-800 hover:border-emart-yellow/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-6">
+                        <!-- Pain Point Header -->
+                        <div class="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 space-y-1">
+                            <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+                                <span>PAIN 02</span>
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <h4 class="font-bold text-base text-red-300">정보 격차 (핫템 부재)</h4>
+                            <p class="text-xs text-gray-300">획일적 기념품 대신 한국인이 실제 먹는 SNS 핫템 정보 부족</p>
+                        </div>
+
+                        <!-- Arrow Down Indicator -->
+                        <div class="text-center text-emart-yellow text-xl">
+                            <i class="fa-solid fa-arrow-down animate-bounce"></i>
+                        </div>
+
+                        <!-- Innovation Solution -->
+                        <div class="space-y-3">
+                            <div class="inline-block px-3 py-1 rounded-lg bg-emart-yellow/20 text-emart-yellow text-xs font-black">
+                                SOLUTION 02
+                            </div>
+                            <h3 class="text-xl font-extrabold text-white group-hover:text-emart-yellow transition-colors">
+                                실시간 TOP 100 큐레이션
+                            </h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                틱톡·샤오홍슈 빅데이터 기반 한국인 찐추천 SNS 핫템 & 실패 없는 '불닭+짜파게티' K-라면 꿀조합 매대 원스톱 구매.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-800 mt-6 flex items-center justify-between text-xs text-emart-yellow font-bold">
+                        <span>"한국인만 아는 꿀조합!"</span>
+                        <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Solution 03 -->
+                <div class="glass-card rounded-3xl p-8 border border-gray-800 hover:border-emart-yellow/50 transition-all duration-300 flex flex-col justify-between group">
+                    <div class="space-y-6">
+                        <!-- Pain Point Header -->
+                        <div class="p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-400 space-y-1">
+                            <div class="flex items-center justify-between text-xs font-bold uppercase tracking-wider">
+                                <span>PAIN 03</span>
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+                            <h4 class="font-bold text-base text-red-300">언어 장벽</h4>
+                            <p class="text-xs text-gray-300">한국어 표기로 맵기 단계, 알레르기/할랄/비건 성분 확인 답답</p>
+                        </div>
+
+                        <!-- Arrow Down Indicator -->
+                        <div class="text-center text-emart-yellow text-xl">
+                            <i class="fa-solid fa-arrow-down animate-bounce"></i>
+                        </div>
+
+                        <!-- Innovation Solution -->
+                        <div class="space-y-3">
+                            <div class="inline-block px-3 py-1 rounded-lg bg-emart-yellow/20 text-emart-yellow text-xs font-black">
+                                SOLUTION 03
+                            </div>
+                            <h3 class="text-xl font-extrabold text-white group-hover:text-emart-yellow transition-colors">
+                                NFC 원터치 다국어 정보
+                            </h3>
+                            <p class="text-gray-300 text-sm leading-relaxed">
+                                매대에 폰을 1초만 태그하면 맵기/성분/할랄/비건 정보 및 15초 조리 숏폼 레시피가 모국어로 자동 디스플레이.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="pt-6 border-t border-gray-800 mt-6 flex items-center justify-between text-xs text-emart-yellow font-bold">
+                        <span>"번역기 앱 필요 없어!"</span>
+                        <i class="fa-solid fa-chevron-right group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- INSTAGRAM CARD NEWS PREVIEW GALLERY -->
+    <section id="cardnews" class="py-24 bg-gray-950 relative border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="text-emart-yellow text-xs sm:text-sm font-black uppercase tracking-wider bg-emart-yellow/10 px-3 py-1 rounded-full border border-emart-yellow/20">
+                    <i class="fa-brands fa-instagram mr-1"></i> Instagram Carousel Preview
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                    인스타그램 카드뉴스 6종 발행 가이드
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    스토리텔링 순서에 맞춘 6종 카드뉴스 상세 역할 및 슬라이드 미리보기
+                </p>
+            </div>
+
+            <!-- Interactive Slide Controller Container -->
+            <div class="glass-card rounded-3xl p-6 md:p-10 border border-gray-800">
+                <!-- Navigation Tabs 1 to 6 -->
+                <div class="flex items-center justify-start md:justify-center space-x-2 overflow-x-auto pb-4 mb-8 border-b border-gray-800 scrollbar-none">
+                    <button onclick="selectCard(1)" id="tab-card-1" class="card-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-emart-yellow text-emart-dark shadow-md">
+                        Card 01: 공감 혹
+                    </button>
+                    <button onclick="selectCard(2)" id="tab-card-2" class="card-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-gray-800 text-gray-300 hover:bg-gray-700">
+                        Card 02: 문제 제시
+                    </button>
+                    <button onclick="selectCard(3)" id="tab-card-3" class="card-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-gray-800 text-gray-300 hover:bg-gray-700">
+                        Card 03: 솔루션 1 (AR)
+                    </button>
+                    <button onclick="selectCard(4)" id="tab-card-4" class="card-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-gray-800 text-gray-300 hover:bg-gray-700">
+                        Card 04: 솔루션 2 (핫템)
+                    </button>
+                    <button onclick="selectCard(5)" id="tab-card-5" class="card-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-gray-800 text-gray-300 hover:bg-gray-700">
+                        Card 05: 솔루션 3 (NFC)
+                    </button>
+                    <button onclick="selectCard(6)" id="tab-card-6" class="card-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-gray-800 text-gray-300 hover:bg-gray-700">
+                        Card 06: 위치 안내
+                    </button>
+                </div>
+
+                <!-- Active Card Content View -->
+                <div id="cardDisplay" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <!-- Dynamic rendering via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPACE EXPERIENCE & SMART SHOPPING SECTION -->
+    <section id="experience" class="py-24 bg-gradient-to-b from-emart-dark to-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+                <span class="text-emart-yellow text-xs sm:text-sm font-black uppercase tracking-wider bg-emart-yellow/10 px-3 py-1 rounded-full border border-emart-yellow/20">
+                    Space Experience Concept
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                    공간 경험 & 스마트 쇼핑 솔루션
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    현지인 추천 랭킹, 한식 소스 체험, AI 다국어 추천 및 즉시 세금 환급까지 한번에!
+                </p>
+            </div>
+
+            <!-- Grid Features -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Feature 1 -->
+                <div class="glass-card rounded-2xl p-6 border border-gray-800 hover:border-yellow-500/40 transition-all text-center space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-emart-yellow/20 text-emart-yellow mx-auto flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">현지인 추천 랭킹 TOP 20</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        실제 한국 소비자가 구매하는 인기가공식품 및 K-디저트(망고&패션프루트) 실시간 랭킹 매대 연동
+                    </p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="glass-card rounded-2xl p-6 border border-gray-800 hover:border-yellow-500/40 transition-all text-center space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-emart-yellow/20 text-emart-yellow mx-auto flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">AI 기반 개인화 추천</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        취향, 매운맛 선호도, 비건/할랄 식단에 맞춘 AI 모바일 다국어 큐레이션 알고리즘 제공
+                    </p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="glass-card rounded-2xl p-6 border border-gray-800 hover:border-yellow-500/40 transition-all text-center space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-emart-yellow/20 text-emart-yellow mx-auto flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">한식 소스 & 디저트 체험</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        불닭, 만능 양념장 등 대표 한식 소스 무료 시식 매대 및 디저트 꿀조합 현장 라이브 가이드
+                    </p>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="glass-card rounded-2xl p-6 border border-gray-800 hover:border-yellow-500/40 transition-all text-center space-y-4">
+                    <div class="w-14 h-14 rounded-2xl bg-emart-yellow/20 text-emart-yellow mx-auto flex items-center justify-center text-2xl font-bold">
+                        <i class="fa-solid fa-receipt"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white">외국인 즉시 환급 (Tax Free)</h3>
+                    <p class="text-xs text-gray-300 leading-relaxed">
+                        계산대에서 여권 스캔 즉시 부가세 차감 결제. 공항 이동 전 대기 시간 없는 최고 속도 처리
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CAMPAIGN TIMELINE & CHECKLIST SECTION -->
+    <section id="checklist" class="py-24 bg-gray-950 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12 space-y-3">
+                <span class="text-emart-yellow text-xs sm:text-sm font-black uppercase tracking-wider bg-emart-yellow/10 px-3 py-1 rounded-full border border-emart-yellow/20">
+                    Step-by-Step Execution Checklist
+                </span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                    단계별 실행 체크리스트
+                </h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    오픈 전(Pre-Launch)부터 D-Day, 오픈 후(Post-Launch)까지의 정밀 실행 계획
+                </p>
+            </div>
+
+            <!-- Tab Phase Buttons -->
+            <div class="flex justify-center space-x-3 mb-10">
+                <button onclick="setPhase('pre')" id="phase-pre" class="px-6 py-3 rounded-xl font-bold text-sm bg-emart-yellow text-emart-dark shadow-lg">
+                    PHASE 1: 오픈 전 (D-14 ~ D-1)
+                </button>
+                <button onclick="setPhase('dday')" id="phase-dday" class="px-6 py-3 rounded-xl font-bold text-sm bg-gray-800 text-gray-300 hover:bg-gray-700">
+                    PHASE 2: 오픈 당일 (D-Day)
+                </button>
+                <button onclick="setPhase('post')" id="phase-post" class="px-6 py-3 rounded-xl font-bold text-sm bg-gray-800 text-gray-300 hover:bg-gray-700">
+                    PHASE 3: 오픈 후 (D+1 ~ D+30)
+                </button>
+            </div>
+
+            <!-- Interactive Checklist Accordion Container -->
+            <div id="checklistContainer" class="max-w-4xl mx-auto space-y-4">
+                <!-- JavaScript injected content -->
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & AIRPORT DELIVERY SECTION -->
+    <section id="location" class="py-24 bg-emart-dark relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Location Details -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-emart-yellow text-xs sm:text-sm font-black uppercase tracking-wider bg-emart-yellow/10 px-3 py-1 rounded-full border border-emart-yellow/20">
+                        Location & Connections
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+                        어디서 만날 수 있냐고?<br>
+                        <span class="text-emart-yellow">이마트 신촌점 지하 3층 (B3)!</span>
+                    </h2>
+
+                    <p class="text-gray-300 text-sm sm:text-base leading-relaxed">
+                        신촌역 2호선 지하 직결로 비가 오나 눈이 오나 편리한 방문! 공항철도 연계 서비스로 캐리어 부담 없이 자유로운 쇼핑을 즐기세요.
+                    </p>
+
+                    <div class="space-y-4 pt-2">
+                        <div class="flex items-start gap-3 p-4 rounded-2xl bg-gray-900 border border-gray-800">
+                            <div class="w-10 h-10 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                                2
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">지하철 2호선 신촌역 직결</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">신촌역 B2 연결 통로 → 노란색 바닥 유도선 따라 B3 직행</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3 p-4 rounded-2xl bg-gray-900 border border-gray-800">
+                            <div class="w-10 h-10 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold text-lg flex-shrink-0">
+                                <i class="fa-solid fa-plane"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-white text-sm">Airport Delivery Service (공항 배송 연계)</h4>
+                                <p class="text-xs text-gray-400 mt-0.5">구매한 쇼핑 박스를 인천/김포공항으로 바로 직송하는 연계 서비스 지원</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Map / Visual Card -->
+                <div class="lg:col-span-6">
+                    <div class="glass-card rounded-3xl p-6 border border-gray-800 relative overflow-hidden space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-gray-400">ADDRESS GUIDE</span>
+                            <span class="text-xs text-emart-yellow font-bold">마포구 신촌로 B3</span>
+                        </div>
+                        <div class="rounded-2xl overflow-hidden h-64 bg-gray-900 relative flex items-center justify-center">
+                            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=800&q=80" alt="Sinchon Map Visual" class="w-full h-full object-cover opacity-60">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/30 to-transparent"></div>
+                            
+                            <div class="absolute z-10 text-center space-y-2 p-4">
+                                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emart-yellow text-emart-dark font-black text-sm shadow-xl">
+                                    <i class="fa-solid fa-location-dot"></i> 이마트 신촌점 B3 K-Palette Zone
+                                </div>
+                                <p class="text-xs text-gray-200">서울특별시 마포구 신촌로 94 지하 3층</p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-3 text-xs text-center font-bold">
+                            <div class="p-3 rounded-xl bg-gray-900 text-gray-300">
+                                <i class="fa-regular fa-clock text-emart-yellow mr-1"></i> 영업시간: 10:00 - 22:00
+                            </div>
+                            <div class="p-3 rounded-xl bg-gray-900 text-gray-300">
+                                <i class="fa-solid fa-headset text-emart-yellow mr-1"></i> 다국어 안내센터 상시 운영
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-12 border-t border-gray-900 text-gray-500 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center space-x-2">
+                    <span class="bg-emart-yellow text-emart-dark font-black px-2 py-0.5 rounded text-sm">emart</span>
+                    <span class="text-white font-bold text-sm">신촌점 K-Palette Zone 홍보 기획 캠페인</span>
+                </div>
+                <div class="flex space-x-6 text-gray-400 text-base">
+                    <a href="#" class="hover:text-emart-yellow transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-emart-yellow transition"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-emart-yellow transition"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="hover:text-emart-yellow transition"><i class="fa-solid fa-comment"></i></a>
+                </div>
+            </div>
+            <p class="text-center md:text-left text-gray-600">
+                © 2026 e-mart Sinchon K-Palette Zone Launch Campaign. All rights reserved. 영상 파일명: video.mp4
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. Language Toggle Simulation Data ---
+        const langData = {
+            ko: {
+                badge: "e-mart Sinchon X K-Palette Zone Launch",
+                title1: "한국 여행 와서",
+                title2: "뭐 살지 고민돼?",
+                subtitle: "진짜 한국인이 사랑하는 리얼 픽! 이마트 신촌점 B3 Level K-Palette Zone에서 언어 장벽 없는 스마트 옴니채널 쇼핑을 경험하세요.",
+                btnShorts: "9:16 홍보 영상 보기",
+                btnSolutions: "3대 솔루션 확인하기"
+            },
+            en: {
+                badge: "e-mart Sinchon X K-Palette Zone Launch",
+                title1: "Visiting Korea and",
+                title2: "Confused What to Buy?",
+                subtitle: "Real picks loved by locals! Experience smart omnichannel shopping with zero language barriers at Emart Sinchon B3 Level K-Palette Zone.",
+                btnShorts: "Watch 9:16 Video",
+                btnSolutions: "Explore 3 Solutions"
+            },
+            zh: {
+                badge: "易买得新村店 K-Palette Zone 策划",
+                title1: "来韩国旅游",
+                title2: "不知道买什么？",
+                subtitle: "韩国本地人的 Real Pick！在易买得新村店 B3 K-Palette Zone 体验无语言障碍的智能全渠道购物。",
+                btnShorts: "观看 9:16 宣传视频",
+                btnSolutions: "查看三大解决方案"
+            },
+            ja: {
+                badge: "emart 新村店 K-Palette Zone Launch",
+                title1: "韓国旅行で",
+                title2: "何を買うかお悩み？",
+                subtitle: "韓国人が本当に愛するリアルピック！emart新村店 B3 K-Palette Zoneで言語の壁がないスマートショッピングを体験してください。",
+                btnShorts: "9:16 動画を見る",
+                btnSolutions: "3 graphical ソリューション"
+            }
+        };
+
+        function changeLanguage(lang) {
+            const data = langData[lang] || langData.ko;
+            document.getElementById('heroBadge').innerText = data.badge;
+            document.getElementById('heroTitle1').innerText = data.title1;
+            document.getElementById('heroTitle2').innerText = data.title2;
+            document.getElementById('heroSubtitle').innerText = data.subtitle;
+            document.getElementById('btnShorts').innerText = data.btnShorts;
+            document.getElementById('btnSolutions').innerText = data.btnSolutions;
+        }
+
+        // --- 2. Video Player Controls ---
+        const video = document.getElementById('shortsVideo');
+        const playIcon = document.getElementById('playIcon');
+        const videoOverlay = document.getElementById('videoOverlay');
+        let isPlaying = false;
+        let isLiked = false;
+        let likes = 12800;
+
+        function togglePlay() {
+            if (video.paused) {
+                video.play().then(() => {
+                    isPlaying = true;
+                    playIcon.className = 'fa-solid fa-pause';
+                    videoOverlay.classList.add('opacity-0');
+                }).catch(e => {
+                    console.log("Video playback error or file missing fallback");
+                    alert("video.mp4 비디오 파일이 준비되면 즉시 재생됩니다.");
+                });
+            } else {
+                video.pause();
+                isPlaying = false;
+                playIcon.className = 'fa-solid fa-play';
+                videoOverlay.classList.remove('opacity-0');
+            }
+        }
+
+        function toggleAudio() {
+            video.muted = !video.muted;
+            document.getElementById('muteIcon').className = video.muted ? 'fa-solid fa-volume-xmark text-sm' : 'fa-solid fa-volume-high text-sm';
+        }
+
+        function toggleSubtitles() {
+            const subBox = document.getElementById('subtitleBox');
+            subBox.classList.toggle('hidden');
+        }
+
+        function likeVideo() {
+            const heart = document.getElementById('heartIcon');
+            const count = document.getElementById('likeCount');
+            if (!isLiked) {
+                isLiked = true;
+                likes += 1;
+                heart.classList.add('text-red-500');
+            } else {
+                isLiked = false;
+                likes -= 1;
+                heart.classList.remove('text-red-500');
+            }
+            count.innerText = (likes / 1000).toFixed(1) + 'k';
+        }
+
+        function shareVideo() {
+            const tempInput = document.createElement('input');
+            tempInput.value = window.location.href;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert('이마트 신촌점 K-Palette Zone 공유 링크가 복사되었습니다!');
+        }
+
+        // --- 3. Card News Carousel Data & Display ---
+        const cardsData = [
+            {
+                num: "01",
+                tag: "(1) 공감 혹",
+                title: "한국 여행 와서 뭐 살지 고민돼?",
+                subtitle: "질문으로 글로벌 타깃의 호기심을 자극하고 K-Palette Zone 인지도 각인",
+                desc: "기념품 매대 대신 '진짜 한국인이 매일 사먹는 리얼 픽'을 소개하는 핵심 메시지 던지기",
+                icon: "fa-circle-question"
+            },
+            {
+                num: "02",
+                tag: "(2) 문제 제시",
+                title: "한국 마트만 오면 멘붕 오는 3가지 이유!",
+                subtitle: "외국인 관광객이 현장에서 겪는 리얼 페인포인트 공감대 형성",
+                desc: "1. 넓어서 길 잃음  2. 한국어 패키지로 성분 확인 불가  3. 핫템 정보 부재",
+                icon: "fa-triangle-exclamation"
+            },
+            {
+                num: "03",
+                tag: "(3) 솔루션 1",
+                title: "바닥 안내선 & AR 길찾기로 헤맴 원천 차단!",
+                subtitle: "이마트24 Yellow 유도선과 앱 설치 없는 웹 기반 AR 길안내",
+                desc: "지하철 2호선 연결통로에서 B3 매장까지 논스톱 안내. '앱 설치도 필요 없어!'",
+                icon: "fa-route"
+            },
+            {
+                num: "04",
+                tag: "(4) 솔루션 2",
+                title: "한국인 찐 추천! SNS 핫템 & 꿀조합 세트",
+                subtitle: "빅데이터 기반 Real K-Pick Top 100 및 꿀조합 매대 구성",
+                desc: "불닭+짜파게티 등 실패 없는 최강 조합을 한 번에 겟하는 원스톱 큐레이션",
+                icon: "fa-fire"
+            },
+            {
+                num: "05",
+                tag: "(5) 솔루션 3",
+                title: "번역기 필요 없어! NFC 원터치 정보 서비스",
+                subtitle: "스마트폰을 매대에 1초만 대면 모국어로 상품 정보 디스플레이",
+                desc: "맵기 단계, 알레르기/할랄/비건 성분 및 15초 조리 숏폼 영상 자동 확인",
+                icon: "fa-nfc-symbol"
+            },
+            {
+                num: "06",
+                tag: "(6) 위치 안내",
+                title: "어디서 만날 수 있냐고? 이마트 신촌점 B3!",
+                subtitle: "신촌역 2호선 지하 직결 동선 및 공항 배송 연계 서비스 안내",
+                desc: "공항 이동 전 필수 방문 코스! 짐 보관 및 공항 직송 서비스 연계 CTA",
+                icon: "fa-map-location-dot"
+            }
+        ];
+
+        function selectCard(cardNum) {
+            // Update Tab styles
+            document.querySelectorAll('.card-tab-btn').forEach((btn, idx) => {
+                if (idx + 1 === cardNum) {
+                    btn.className = "card-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-emart-yellow text-emart-dark shadow-md";
+                } else {
+                    btn.className = "card-tab-btn px-4 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap bg-gray-800 text-gray-300 hover:bg-gray-700";
+                }
+            });
+
+            const data = cardsData[cardNum - 1];
+            const display = document.getElementById('cardDisplay');
+
+            display.innerHTML = `
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="w-full max-w-sm aspect-square rounded-3xl bg-gradient-to-br from-yellow-500/20 via-gray-900 to-black p-8 border-2 border-emart-yellow/40 flex flex-col justify-between shadow-2xl relative overflow-hidden group">
+                        <div class="absolute -right-8 -bottom-8 w-40 h-40 bg-emart-yellow/10 rounded-full blur-2xl"></div>
+                        
+                        <div class="flex justify-between items-center z-10">
+                            <span class="bg-emart-yellow text-emart-dark font-black text-xs px-3 py-1 rounded-full">Card ${data.num} / 06</span>
+                            <span class="text-xs text-gray-400 font-bold">INSTAGRAM CAROUSEL</span>
+                        </div>
+
+                        <div class="space-y-3 z-10 my-auto text-center">
+                            <div class="w-16 h-16 mx-auto rounded-2xl bg-emart-yellow/20 text-emart-yellow flex items-center justify-center text-3xl mb-2">
+                                <i class="fa-solid ${data.icon}"></i>
+                            </div>
+                            <span class="text-xs font-extrabold text-emart-yellow tracking-widest uppercase">${data.tag}</span>
+                            <h3 class="text-2xl font-black text-white leading-snug">${data.title}</h3>
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-800 flex justify-between items-center text-xs text-gray-400 z-10">
+                            <span>emart Sinchon</span>
+                            <span class="text-emart-yellow font-bold">@emart_sinchon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-block px-3 py-1 rounded-lg bg-emart-yellow/10 border border-emart-yellow/30 text-emart-yellow text-xs font-bold">
+                        ${data.tag} 발행 상세 가이드
+                    </div>
+                    <h3 class="text-2xl font-extrabold text-white">${data.title}</h3>
+                    <p class="text-emart-yellow text-base font-semibold">${data.subtitle}</p>
+                    <div class="p-5 rounded-2xl bg-gray-900 border border-gray-800 text-gray-300 text-sm leading-relaxed space-y-2">
+                        <div class="font-bold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-check text-emart-yellow"></i> 주요 콘텐츠 소구점:
+                        </div>
+                        <p class="pl-6">${data.desc}</p>
+                    </div>
+
+                    <div class="flex items-center gap-4 text-xs text-gray-400 pt-2">
+                        <span class="flex items-center gap-1"><i class="fa-regular fa-clock text-emart-yellow"></i> 발행 권장 타임: D-Day 09:00</span>
+                        <span class="flex items-center gap-1"><i class="fa-solid fa-hashtag text-emart-yellow"></i> #KPaletteZone #이마트신촌</span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // --- 4. Checklist Phase Data & Display ---
+        const checklistData = {
+            pre: [
+                { title: "D-14 ~ D-8 | 사전 준비 & 콘텐츠 제작/검수", items: ["카드뉴스 6장 최종 감수 (영문 표기, 브랜드 규격 무결성 검증)", "홍보 영상(mp4) 채널별 최적 규격 편집 (TikTok 9:16 세로형)", "다국어 자막 스크립트 번역 감수 완료 (영어, 중국어 간체/번체, 일본어)", "글로벌 여행 인플루언서(KOL) 5인 섭외 및 촬영 가이드 전달"] },
+                { title: "D-7 ~ D-2 | 티저 공개 & 버즈업 확산", items: ["D-7: TikTok 티저 영상 공개 ('한국 마트 길 잃어버리는 사람 주목!')", "D-5: 인스타그램 카드뉴스 (1)~(2) 업로드 (문제 제시 공감대)", "D-4: 샤오홍슈 중국어 후기체 티징 포스팅 배포", "D-3: 인스타그램 카드뉴스 (3)~(4) 업로드 (AR 길찾기 & 꿀조합)", "D-2: 카카오 공식채널 친구 대상 티징 메시지 발송"] },
+                { title: "D-1 | 오픈 전일 매장 인프라 & 시스템 최종 리허설", items: ["2호선 신촌역 연결통로~ B3 매장 바닥 노란색 유도선 시공 검수", "매대별 NFC 태그 전수 스캔 테스트 (아이폰/갤럭시 모국어 정상 로딩)", "웹 기반 AR 길찾기 접속 트래픽 부하 테스트 및 비상용 QR 비치", "인스타그램 카드뉴스 (6) 예약 발행 설정 (D-Day 09:00)"] }
+            ],
+            dday: [
+                { title: "오전 09:00 ~ 12:00 | 공식 오픈 선언 & 전 채널 동시 런칭", items: ["09:00 인스타그램 카드뉴스 (6) 및 오프닝 릴스 게시 ('드디어 오늘 오픈!')", "09:30 카카오채널 오픈 공식 메시지 발송 (사은품 쿠폰 연계)", "10:00 샤오홍슈 오픈 당일 현장 라이브 피드 업로드", "10:30 현장 NFC 태그 및 AR 시스템 실제 고객 최초 유입 모니터링"] },
+                { title: "오후 12:00 ~ 18:00 | 현장 콘텐츠 생성 & 인플루언서 팸투어", items: ["초청 글로벌 인플루언서 매장 방문 맞이 및 촬영 동선 전담 에스코트", "실제 외국인 관광객 NFC 태그 체험 반응 리얼 클립 수집 (초상권 동의)", "실시간 인스타그램 스토리 업로드 ('현 시간 인기 꿀조합 품절 임박')", "현장 이벤트 부스 운영 점검 (방문 인증샷 작성 시 K-스낵 증정)"] },
+                { title: "저녁 18:00 ~ 22:00 | 야간 바이럴 확산 & 데일리 성과 마감", items: ["18:30 TikTok 당일 현장 스케치 숏폼 업로드", "19:30 유튜브 Shorts 런칭 영상 업로드 및 댓글 내 구글맵 위치 고정", "21:00 각 채널 인입 댓글, DM 문의 실시간 전수 응대", "22:00 D-Day 당일 지표 마감 집계 (도달수, 저장수, 해시태그 생성수)"] }
+            ],
+            post: [
+                { title: "D+1 ~ D+7 | 초기 바이럴 증폭 & UGC 리포스팅", items: ["해시태그 #KPaletteZone, #이마트신촌 모니터링 및 우수 UGC 리그램", "인플루언서 릴스 성과 분석 및 고효율 영상 유료 부스팅 (Spark Ads)", "현장 VOC 취합 (외국인 불편 사항 확인 후 다국어 안내 보강)", "D+7: 오픈 1주일 차 1차 종합 성과 리포트 발행"] },
+                { title: "D+8 ~ D+30 | 상시 운영 체계 확립 & 시즌별 큐레이션", items: ["격주 단위 '실시간 SNS 인기 Top 10' 카드뉴스 정기 발행", "고객 요청 기반 'K-스낵/디저트 이색 꿀조합' 숏폼 튜토리얼 릴리즈 (주 2편)", "구글 지도 및 트립어드바이저 내 매장 리뷰 관리 및 평점 모니터링", "D+30: 캠페인 월간 최종 마감 리포트 작성 및 시즌 2 회의"] }
+            ]
+        };
+
+        function setPhase(phaseKey) {
+            // Update Button Styling
+            ['pre', 'dday', 'post'].forEach(p => {
+                const btn = document.getElementById(`phase-${p}`);
+                if (p === phaseKey) {
+                    btn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-emart-yellow text-emart-dark shadow-lg";
+                } else {
+                    btn.className = "px-6 py-3 rounded-xl font-bold text-sm bg-gray-800 text-gray-300 hover:bg-gray-700";
+                }
+            });
+
+            const items = checklistData[phaseKey];
+            const container = document.getElementById('checklistContainer');
+            
+            container.innerHTML = items.map((group, idx) => `
+                <div class="glass-card rounded-2xl p-6 border border-gray-800 space-y-4">
+                    <h4 class="font-extrabold text-base text-emart-yellow flex items-center gap-2">
+                        <i class="fa-solid fa-calendar-check"></i> ${group.title}
+                    </h4>
+                    <ul class="space-y-2.5">
+                        ${group.items.map(item => `
+                            <li class="flex items-start gap-3 text-xs sm:text-sm text-gray-300">
+                                <input type="checkbox" checked class="mt-1 rounded accent-yellow-500 w-4 h-4 cursor-pointer">
+                                <span>${item}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // --- Init Defaults ---
+        window.onload = function () {
+            selectCard(1);
+            setPhase('pre');
+        }
+    </script>
+</body>
+</html>
